@@ -5,10 +5,10 @@ Utils.Timer = function() {
 	var root = this;
 	var clock;
 	this.controls = true;
-  this.container = "body";
+	this.container = "body";
 	this.name = "defaultTimer";
 	this.countdown = true;
-  this.totalTime = 60;
+	this.totalTime = 60;
 	this.isOn = false;
 	
 	for(var prop in arguments[0]) {
@@ -47,47 +47,47 @@ Utils.Timer = function() {
 		$tableau.text(val);
 	}
 	
-  function start() {
+	function start() {
 		if(!root.isOn){
 			if(root.currentTime === root.startFrom) setTimeout(tik, 1000);
 			clock = setInterval(tik, 1000);
 			root.isOn = true;
 			if(root.controls) $('.play', $htmlRoot).removeClass("play").addClass("stop");
 		}
-  }
+	}
 
-  function stop() {
+	function stop() {
 		if(root.isOn){
 			clearInterval(clock);
 			root.isOn = false;
 			if(root.controls) $('.stop', $htmlRoot).removeClass("stop").addClass("play");
 		}
-  }
+	}
 
-  function reset() {
+	function reset() {
 		root.startFrom = (root.countdown)? root.totalTime : 0;
 		root.currentTime = root.startFrom;
 		stop();
 		updateClock(getHumanTime(root.startFrom));
-  }
+	}
 
-  function getCurrentTime() {
+	function getCurrentTime() {
 		return root.currentTime;
-  }
+	}
 
-  function getTotalTime() {
+	function getTotalTime() {
 		return root.totalTime;
-  }
+	}
 
 	function setTimeTo(val) {
 		root.currentTime = val;
 		updateClock(getHumanTime(root.currentTime));
-  }
+	}
 	
-  function setTotalTimeTo(val) {
+	function setTotalTimeTo(val) {
 		root.totalTime = val;
 		reset();
-  }
+	}
 	
 	function wireControls(){
 		$($htmlRoot).on("click", ".play", function(){
@@ -110,13 +110,13 @@ Utils.Timer = function() {
 		wireControls();
 	}
 	
-  return {
-    start: start,
-    stop: stop,
+	return {
+		start: start,
+		stop: stop,
 		reset: reset,
 		getCurrentTime: getCurrentTime,
 		getTotalTime: getTotalTime,
 		setTotalTimeTo: setTotalTimeTo,
 		setTimeTo: setTimeTo
-  };
+	};
 };
