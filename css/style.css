@@ -1,0 +1,60 @@
+		.timer {
+			position: fixed;
+			bottom: 0px;
+			left: 50%;
+			margin-left: -100px;
+			width: 200px;
+			height: 60px;
+			background: #222;
+			text-align: center;
+		}
+		.timer .digits {
+			display: block;
+			padding: 12px 0 0;
+			color: #fff;
+			font-size: 30px;
+		}
+		.timer .controls {
+			width: 30px;
+			height: 30px;
+			position: absolute;
+			top: 11px;
+			right: 5px;
+			float: right;
+			cursor: pointer;
+			overflow: hidden;
+		}
+		.timer .controls.button:after {
+			color: #fff;
+			font-size: 56px;
+			position: relative;
+			display: block;
+			margin-top: -28px;
+		}
+		.timer .controls.play:after {
+			content: '\25B8';
+		}
+		.timer .controls.play:hover:after {
+			content: '\25B9';
+		}
+		.timer .controls.stop:after {
+			content: '\25AA';
+			margin-top: -26px;
+			font-size: 74px;
+		}
+		.timer .controls.stop:hover:after {
+			content: '\25AB';
+		}
+		.timer .controls.reset.button {
+			left: 5px;
+		}
+		.timer .controls.reset:after {
+			content: '\21BA';
+			font-size: 28px;
+			margin-top: -3px;
+		}
+		.timer .controls.reset:hover:after {
+			content: '\21BA';
+			font-size: 28px;
+			margin-top: -3px;
+		}
