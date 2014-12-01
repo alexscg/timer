@@ -41,47 +41,47 @@ Utils.Timer = function() {
 		$tableau.text(val);
 	}
 	
-    function start() {
+	function start() {
 		if(!isOn){
 			if(currentTime === startFrom) setTimeout(tik, 1000);
 			clock = setInterval(tik, 1000);
 			isOn = true;
 			if(controls) $('.play', $htmlRoot).removeClass("play").addClass("stop");
 		}
-    }
+	}
 
-    function stop() {
+	function stop() {
 		if(isOn){
 			clearInterval(clock);
 			isOn = false;
 			if(controls) $('.stop', $htmlRoot).removeClass("stop").addClass("play");
 		}
-    }
+	}
 
-    function reset() {
+	function reset() {
 		startFrom = (countdown)? totalTime : 0;
 		currentTime = startFrom;
 		stop();
 		updateClock(getHumanTime(startFrom));
-    }
+	}
 
-    function getCurrentTime() {
+	function getCurrentTime() {
 		return currentTime;
-    }
+	}
 
-    function getTotalTime() {
+	function getTotalTime() {
 		return totalTime;
-    }
+	}
 
 	function setTimeTo(val) {
 		currentTime = val;
 		updateClock(getHumanTime(currentTime));
-    }
+	}
 	
-    function setTotalTimeTo(val) {
+	function setTotalTimeTo(val) {
 		totalTime = val;
 		reset();
-    }
+	}
 	
 	function wireControls(){
 		$($htmlRoot).on("click", ".play", function(){
@@ -104,9 +104,9 @@ Utils.Timer = function() {
 		wireControls();
 	}
 	
-    return {
-        start: start,
-        stop: stop,
+	return {
+		start: start,
+		stop: stop,
 		reset: reset,
 		getCurrentTime: getCurrentTime,
 		getTotalTime: getTotalTime,
