@@ -101,7 +101,7 @@ Utils.Timer = function() {
 		});
 	}
 	
-	$("body").append( '<div id="' + this.name + '" class="snitimer"><span class="digits">' + getHumanTime(root.currentTime) + '</span></div>' );
+	$("body").append( '<div id="' + this.name + '" class="timer"><span class="digits">' + getHumanTime(root.currentTime) + '</span></div>' );
 	var $htmlRoot = $('#' + root.name);
 	var $tableau = $('.digits', $htmlRoot);
 	if(root.controls){
