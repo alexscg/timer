@@ -1,6 +1,6 @@
 var Utils = {};
 
-Utils.Timer = function() {
+Utils.Timer = function(cfg) {
 
 	var root = this;
 	var clock,
