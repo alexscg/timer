@@ -16,7 +16,7 @@ Utils.Timer = function(cfg) {
 	function getHumanTime(val) {
 		val = val * 1000;
 		var hour = (val/1000/60/60) << 0,
-			min = (val/1000/60) << 0,
+			min = ((val/1000/60) % 60),
 			sec = (val/1000) % 60,
 			hour = (hour>9)? hour : '0' + hour,
 			min = (min>9)? min : '0' + min,
