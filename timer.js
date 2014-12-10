@@ -1,6 +1,6 @@
-var Utils = {};
+if (typeof Global=="undefined" || !Global) { var Global={}; }
 
-Utils.Timer = function(cfg) {
+Global.Timer = function(cfg) {
 
 	var root = this;
 	var clock,
@@ -9,6 +9,7 @@ Utils.Timer = function(cfg) {
 		name = cfg.name || "defaultTimer",
 		countdown = cfg.countdown || true,
 		totalTime = cfg.totalTime || 60,
+		timesUpCallback = cfg.callback || null,
 		isOn = cfg.isOn || false,
 		startFrom = (countdown)? totalTime : 0,
 		currentTime = startFrom;
@@ -16,7 +17,7 @@ Utils.Timer = function(cfg) {
 	function getHumanTime(val) {
 		val = val * 1000;
 		var hour = (val/1000/60/60) << 0,
-			min = ((val/1000/60) % 60),
+			min = ((val/1000/60) << 0) % 60,
 			sec = (val/1000) % 60,
 			hour = (hour>9)? hour : '0' + hour,
 			min = (min>9)? min : '0' + min,
@@ -34,6 +35,7 @@ Utils.Timer = function(cfg) {
 		else {
 			updateClock(getHumanTime(0));
 			stop();
+			if(timesUpCallback != null) timesUpCallback();
 		}
 	}
 	
@@ -84,18 +86,21 @@ Utils.Timer = function(cfg) {
 	}
 	
 	function wireControls(){
-		$($htmlRoot).on("click", ".play", function(){
+		$($htmlRoot).on("click", ".play", function(e){
+			e.stopPropagation();
 			start.call();
 		});
-		$($htmlRoot).on("click", ".stop", function(){
+		$($htmlRoot).on("click", ".stop", function(e){
+			e.stopPropagation();
 			stop.call();
 		});
-		$($htmlRoot).on("click", ".reset", function(){
+		$($htmlRoot).on("click", ".reset", function(e){
+			e.stopPropagation();
 			reset.call();
 		});
 	}
 	
-	$("body").append( '<div id="' + name + '" class="timer"><span class="digits">' + getHumanTime(currentTime) + '</span></div>' );
+	$("body").append( '<div id="' + name + '" class="timer"><div class="header">open timer</div><span class="digits">' + getHumanTime(currentTime) + '</span></div>' );
 	var $htmlRoot = $('#' + name);
 	var $tableau = $('.digits', $htmlRoot);
 	if(controls){
@@ -112,5 +117,5 @@ Utils.Timer = function(cfg) {
 		getTotalTime: getTotalTime,
 		setTotalTimeTo: setTotalTimeTo,
 		setTimeTo: setTimeTo
-    };
+	};
 };
