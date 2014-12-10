@@ -17,14 +17,17 @@
 	<script type="text/javascript" src="js/timer.js"></script>
 	
 	<script>
-	  $(function() {
-	  	Utils.timer1 = new Utils.Timer({
-	  		name: "AlexTimer",
-	  		controls: true,
-	  		totalTime: 75,
-	  		countdown: true
-	  	});
-	  });
+	$(function() {
+		SNI.Util.timer1 = new SNI.Timer({
+			name: "RealSenseTimer",
+			controls: true,
+			totalTime: (<?=($recipe["cook_time"]+$recipe["prep_time"])*60?>),
+			countdown: true,
+			callback: function () {
+				console.log('Timer CB called');
+			}
+		});
+	});
 	</script>
 </head>
 
