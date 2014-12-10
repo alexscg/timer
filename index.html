@@ -18,10 +18,10 @@
 	
 	<script>
 	$(function() {
-		SNI.Util.timer1 = new SNI.Timer({
+		Global.timer1 = new Global.Timer({
 			name: "RealSenseTimer",
 			controls: true,
-			totalTime: (<?=($recipe["cook_time"]+$recipe["prep_time"])*60?>),
+			totalTime: 100,
 			countdown: true,
 			callback: function () {
 				console.log('Timer CB called');
